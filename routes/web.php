@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controlle\GroceriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/groceries', [GroceriesController::class, 'index']);
+Route::get('/groceries/create', [GroceriesController::class, 'create']);
+Route::post('/groceries', [GroceriesController::class, 'store']);
+Route::get('/groceries/{grocery}/edit', [GroceriesController::class, 'edit']);
+Route::match(['put', 'patch'], '/groceries/{grocery}', [GroceriesController::class, 'update']);
+Route::delete('/groceries/{grocery}', [GroceriesController::class, 'destroy']);
+
+Route::redirect('/', '/groceries');
