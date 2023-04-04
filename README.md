@@ -6,3 +6,4 @@ Recreate the previous shoppinglist with laravel and add new functionality
 
 Updates:
 - Added routes
+- Added GroceriesController with relevant functions

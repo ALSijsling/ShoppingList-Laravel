@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controlle\GroceriesController;
+use App\Http\Controllers\GroceriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +14,11 @@ use App\Http\Controlle\GroceriesController;
 |
 */
 
-Route::get('/groceries', [GroceriesController::class, 'index']);
-Route::get('/groceries/create', [GroceriesController::class, 'create']);
-Route::post('/groceries', [GroceriesController::class, 'store']);
-Route::get('/groceries/{grocery}/edit', [GroceriesController::class, 'edit']);
-Route::match(['put', 'patch'], '/groceries/{grocery}', [GroceriesController::class, 'update']);
-Route::delete('/groceries/{grocery}', [GroceriesController::class, 'destroy']);
+Route::get('/groceries', [GroceriesController::class, 'index'])->name('groceries.index');
+Route::get('/groceries/create', [GroceriesController::class, 'create'])->name('groceries.create');
+Route::post('/groceries', [GroceriesController::class, 'store'])->name('groceries.store');
+Route::get('/groceries/{grocery}/edit', [GroceriesController::class, 'edit'])->name('groceries.edit');
+Route::match(['put', 'patch'], '/groceries/{grocery}', [GroceriesController::class, 'update'])->name('groceries.update');
+Route::delete('/groceries/{grocery}', [GroceriesController::class, 'destroy'])->name('groceries.destroy');
 
 Route::redirect('/', '/groceries');
