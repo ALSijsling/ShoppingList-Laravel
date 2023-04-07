@@ -9,7 +9,7 @@ class GroceriesController extends Controller
 
     public function index()
     {
-        return "Index page";
+        return view('groceries');
     }
 
     public function create()
