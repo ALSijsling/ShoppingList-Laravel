@@ -8,3 +8,5 @@ Updates:
 - Added routes
 - Added GroceriesController with relevant functions
 - Added Database
+- Added table with current groceries including subtotal and total costs
+- Added css
