@@ -10,3 +10,6 @@ Updates:
 - Added Database
 - Added table with current groceries including subtotal and total costs
 - Added css
+- Added app lay-out
+- Added nav
+- Added index, create and edit blade templates to lay-out

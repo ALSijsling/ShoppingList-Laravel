@@ -4,6 +4,26 @@ body {
     margin: 0px;
 }
 
+#navBar {
+    width: fit-content;
+    min-height: 50px;
+    margin: 0px;
+    padding: 10px;
+    list-style-type: none;
+    background-color: #3B3A3A;
+    text-align: left;
+}
+
+#navBar a {
+    color: #E3E2E2;
+    text-decoration-line: none;
+    padding: 5px;
+}
+
+#navBar li {
+    padding: 5px;
+}
+
 #ShoppingList {
     margin-top: 5%;
     margin-left: 15%;
