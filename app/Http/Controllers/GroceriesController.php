@@ -10,25 +10,31 @@ class GroceriesController extends Controller
 
     public function index()
     {
-        $groceries = grocery::all();
+        $groceries = Grocery::all();
         $total = 0;
         foreach ($groceries as $grocery) {
             $subtotal = $grocery->Quantity * $grocery->Price;
             $total = $total + $subtotal;
         }
         return view('groceries.index')
-                    ->with('groceries', grocery::all())
+                    ->with('groceries', $groceries)
                     ->with('total', $total);
     }
 
     public function create()
     {
-        
+        return view('groceries.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        
+        $grocery = new Grocery;
+        $grocery->Product = $request->Product;
+        $grocery->Quantity = $request->Quantity;
+        $grocery->Price = $request->Price;
+        $grocery->save();
+
+        return redirect('/groceries');        
     }
 
     public function edit()

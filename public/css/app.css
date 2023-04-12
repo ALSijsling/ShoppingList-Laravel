@@ -24,7 +24,7 @@ body {
     padding: 5px;
 }
 
-#ShoppingList {
+#ShoppingList, #addGroceries {
     margin-top: 5%;
     margin-left: 15%;
     border-collapse: collapse;
