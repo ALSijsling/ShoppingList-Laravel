@@ -32,12 +32,12 @@
                         <td class="price">{!! "&euro; " !!} {{ $grocery->Price }}</td>
                         <td class="subtotal">{!! "&euro; " !!} {{ $grocery->Quantity * $grocery->Price }}</td>
                         <td class="edit">
-                            <form action="{{route('groceries.edit', ['grocery' => $grocery->id])}}" method="GET">
+                            <form action="{{route('groceries.edit', ['grocery' => $grocery])}}" method="GET">
                                 <input type="submit" value="Edit">
                                 @csrf
                             </form></td>
                         <td class="delete"><input type="hidden" name="_method" value="delete" />
-                            <form action="{{route('groceries.destroy', ['grocery' => $grocery->id])}}" method="POST">
+                            <form action="{{route('groceries.destroy', ['grocery' => $grocery])}}" method="POST">
                                 <input type="submit" value="Delete">
                                 @method('DELETE')
                                 @csrf

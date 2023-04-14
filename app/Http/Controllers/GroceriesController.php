@@ -45,16 +45,16 @@ class GroceriesController extends Controller
         return redirect('/groceries');        
     }
 
-    public function edit(Request $request)
+    public function edit(Request $request, Grocery $grocery)
     {
-        $id = $request->segment(2);
-        $grocery = Grocery::find($id);
+        $grocery = $request->segment(2);
+        $grocery = Grocery::find($grocery);
         
         return view('groceries.edit')
                     ->with('grocery', $grocery);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, Grocery $grocery)
     {
         $request->validate([
             'Product' => 'required|string|min:2',
@@ -62,8 +62,8 @@ class GroceriesController extends Controller
             'Price' => 'required|numeric'
         ]);
 
-        $id = $request->segment(2);
-        $grocery = Grocery::find($id);
+        $grocery = $request->segment(2);
+        $grocery = Grocery::find($grocery);
         
         $grocery->Product = strtolower($request->Product);
         $grocery->Quantity = $request->Quantity;
@@ -73,10 +73,10 @@ class GroceriesController extends Controller
         return redirect('/groceries');
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request, Grocery $grocery)
     {
-        $id = $request->segment(2);
-        Grocery::destroy($id);
+        $grocery = $request->segment(2);
+        Grocery::destroy($grocery);
         
         return redirect('/groceries');
     }

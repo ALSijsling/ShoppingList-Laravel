@@ -13,7 +13,7 @@
         @endsection
 
         @section('content')
-            <form id="addGroceries" method="POST" action="{{route('groceries.update', ['grocery' => $grocery->id])}}">
+            <form id="addGroceries" method="POST" action="{{route('groceries.update', ['grocery' => $grocery])}}">
                 @csrf
                 @method('PUT')
 
