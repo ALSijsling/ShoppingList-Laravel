@@ -13,4 +13,5 @@ Updates:
 - Added app lay-out
 - Added nav
 - Added index, create and edit blade templates to lay-out
-- can add groceries to shopping list
+- Can add groceries to shopping list
+- Can edit and delete groceries from shoppinglist

@@ -37,18 +37,29 @@ class GroceriesController extends Controller
         return redirect('/groceries');        
     }
 
-    public function edit()
+    public function edit(Request $request)
     {
-        
+        $id = $request->segment(2);
+        $grocery = Grocery::find($id);
+        return view('groceries.edit')
+                    ->with('grocery', $grocery);
     }
 
-    public function update()
+    public function update(Request $request)
     {
-        
+        $id = $request->segment(2);
+        $grocery = Grocery::find($id);
+        $grocery->Product = $request->Product;
+        $grocery->Quantity = $request->Quantity;
+        $grocery->Price = $request->Price;
+        $grocery->save();
+        return redirect('/groceries');
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
-        
+        $id = $request->segment(2);
+        Grocery::destroy($id);
+        return redirect('/groceries');
     }
 }

@@ -5,31 +5,36 @@ body {
 }
 
 #navBar {
-    width: fit-content;
-    min-height: 50px;
+    width: 10%;
+    height: 100%;
     margin: 0px;
-    padding: 10px;
+    margin-top: -10%;
+    padding: 0px;
+    position: fixed;
     list-style-type: none;
     background-color: #3B3A3A;
-    text-align: left;
+    text-align: center;
 }
 
 #navBar a {
+    display: block;
+    padding: 10px;
     color: #E3E2E2;
     text-decoration-line: none;
-    padding: 5px;
 }
 
-#navBar li {
-    padding: 5px;
+#navBar a:hover {
+    background-color: #888;
+    color: #D8D7D7;
 }
 
 #ShoppingList, #addGroceries {
-    margin-top: 5%;
+    margin-top: 10%;
     margin-left: 15%;
     border-collapse: collapse;
     background-color: #CDCACA;
-    width: 500px;
+    min-width: 400px;
+    width: fit-content;
     padding: 10px;
     text-align: center;
 }
@@ -41,6 +46,8 @@ thead {
 td {
     border: 1px solid #888;
     padding: 10px;
+    min-width: 75px;
+    width: fit-content;
 }
 
 .price, .quantity, .subtotal, #totalCost {

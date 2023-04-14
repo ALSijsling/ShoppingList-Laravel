@@ -20,6 +20,8 @@
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Subtotal</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,11 +31,25 @@
                         <td class="quantity">{{ $grocery->Quantity }}</td>
                         <td class="price">{!! "&euro; " !!} {{ $grocery->Price }}</td>
                         <td class="subtotal">{!! "&euro; " !!} {{ $grocery->Quantity * $grocery->Price }}</td>
+                        <td class="edit">
+                            <form action="{{route('groceries.edit', ['grocery' => $grocery->id])}}" method="GET">
+                                <input type="submit" value="Edit">
+                                @csrf
+                            </form></td>
+                        <td class="delete"><input type="hidden" name="_method" value="delete" />
+                            <form action="{{route('groceries.destroy', ['grocery' => $grocery->id])}}" method="POST">
+                                <input type="submit" value="Delete">
+                                @method('DELETE')
+                                @csrf
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                     <tr>
                         <td id="total" colspan="3">Total</td>
                         <td id="totalCost">{!! "&euro; " !!} {{ $total }}</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
