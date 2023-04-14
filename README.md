@@ -15,3 +15,4 @@ Updates:
 - Added index, create and edit blade templates to lay-out
 - Can add groceries to shopping list
 - Can edit and delete groceries from shoppinglist
+- Added server-side validation

@@ -12,10 +12,12 @@ class GroceriesController extends Controller
     {
         $groceries = Grocery::all();
         $total = 0;
+        
         foreach ($groceries as $grocery) {
             $subtotal = $grocery->Quantity * $grocery->Price;
             $total = $total + $subtotal;
         }
+        
         return view('groceries.index')
                     ->with('groceries', $groceries)
                     ->with('total', $total);
@@ -28,8 +30,14 @@ class GroceriesController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'Product' => 'required|string|min:2',
+            'Quantity' => 'required|integer|min:0',
+            'Price' => 'required|numeric'
+        ]);
+
         $grocery = new Grocery;
-        $grocery->Product = $request->Product;
+        $grocery->Product = strtolower($request->Product);
         $grocery->Quantity = $request->Quantity;
         $grocery->Price = $request->Price;
         $grocery->save();
@@ -41,18 +49,27 @@ class GroceriesController extends Controller
     {
         $id = $request->segment(2);
         $grocery = Grocery::find($id);
+        
         return view('groceries.edit')
                     ->with('grocery', $grocery);
     }
 
     public function update(Request $request)
     {
+        $request->validate([
+            'Product' => 'required|string|min:2',
+            'Quantity' => 'required|integer|min:0',
+            'Price' => 'required|numeric'
+        ]);
+
         $id = $request->segment(2);
         $grocery = Grocery::find($id);
-        $grocery->Product = $request->Product;
+        
+        $grocery->Product = strtolower($request->Product);
         $grocery->Quantity = $request->Quantity;
         $grocery->Price = $request->Price;
         $grocery->save();
+        
         return redirect('/groceries');
     }
 
@@ -60,6 +77,7 @@ class GroceriesController extends Controller
     {
         $id = $request->segment(2);
         Grocery::destroy($id);
+        
         return redirect('/groceries');
     }
 }
