@@ -13,11 +13,26 @@
         @endsection
     
         @section('content')
+            @if($errors->any()) 
+                @foreach($errors->all() as $error)
+                    {{ $error }}
+                @endforeach
+            @endif
+
+
             <form id="addGroceries" method="POST" action="{{route('groceries.store')}}">
                 @csrf
 
                 <label for="Product">Product</label><br>
                 <input type="text" name="Product" value=""><br><br>
+
+                <label for="Category">Category</label><br>
+                <input list="Category" name="Category">
+                    <datalist id="Category">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->Category }}">
+                        @endforeach
+                    </datalist><br><br>
 
                 <label for="Quantity">Quantity</label><br>
                 <input type="number" name="Quantity" min="0" value=""><br><br>

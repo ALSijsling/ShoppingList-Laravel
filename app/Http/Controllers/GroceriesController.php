@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Grocery;
+use App\Models\Category;
 
 class GroceriesController extends Controller
 {
@@ -25,19 +26,24 @@ class GroceriesController extends Controller
 
     public function create()
     {
-        return view('groceries.create');
+        $categories = Category::all();
+
+        return view('groceries.create')
+                    ->with('categories', $categories);
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'Product' => 'required|string|min:2',
+            'Category' => 'required',
             'Quantity' => 'required|integer|min:0',
             'Price' => 'required|numeric'
         ]);
 
         $grocery = new Grocery;
         $grocery->Product = strtolower($request->Product);
+        $grocery->Category = $request->Category;
         $grocery->Quantity = $request->Quantity;
         $grocery->Price = $request->Price;
         $grocery->save();
@@ -47,25 +53,27 @@ class GroceriesController extends Controller
 
     public function edit(Request $request, Grocery $grocery)
     {
-        $grocery = $request->segment(2);
-        $grocery = Grocery::find($grocery);
+        $grocery = Grocery::find($request->segment(2));
+        $categories = Category::all();
         
         return view('groceries.edit')
-                    ->with('grocery', $grocery);
+                    ->with('grocery', $grocery)
+                    ->with('categories', $categories);
     }
 
     public function update(Request $request, Grocery $grocery)
     {
         $request->validate([
             'Product' => 'required|string|min:2',
+            'Category' => 'required',
             'Quantity' => 'required|integer|min:0',
             'Price' => 'required|numeric'
         ]);
 
-        $grocery = $request->segment(2);
-        $grocery = Grocery::find($grocery);
+        $grocery = Grocery::find($request->segment(2));
         
         $grocery->Product = strtolower($request->Product);
+        $grocery->Category = $request->Category;
         $grocery->Quantity = $request->Quantity;
         $grocery->Price = $request->Price;
         $grocery->save();
@@ -75,8 +83,7 @@ class GroceriesController extends Controller
 
     public function destroy(Request $request, Grocery $grocery)
     {
-        $grocery = $request->segment(2);
-        Grocery::destroy($grocery);
+        Grocery::destroy($request->segment(2));
         
         return redirect('/groceries');
     }

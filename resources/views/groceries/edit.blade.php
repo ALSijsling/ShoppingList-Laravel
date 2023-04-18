@@ -20,6 +20,14 @@
                 <label for="Product">Product</label><br>
                 <input type="text" name="Product" value="{{ $grocery->Product }}"><br><br>
 
+                <label for="Category">Category</label><br>
+                <input list="Category" name="Category" placeholder="{{ $grocery ->Category }}">
+                    <datalist id="Category">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->Category }}">
+                        @endforeach
+                    </datalist><br><br>
+
                 <label for="Quantity">Quantity</label><br>
                 <input type="number" name="Quantity" min="0" value="{{ $grocery->Quantity }}"><br><br>
 

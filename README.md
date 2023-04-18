@@ -17,3 +17,4 @@ Updates:
 - Can edit and delete groceries from shoppinglist
 - Added server-side validation
 - Added route model binding
+- Added grocery category

@@ -17,6 +17,7 @@
                 <thead>
                     <tr>
                         <th>Product</th>
+                        <th>Category</th>
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Subtotal</th>
@@ -28,6 +29,7 @@
                     @foreach ($groceries as $grocery)
                     <tr>
                         <td class="product">{{ ucwords($grocery->Product) }}</td>
+                        <td class="category">{{ $grocery->Category }}</td>
                         <td class="quantity">{{ $grocery->Quantity }}</td>
                         <td class="price">{!! "&euro; " !!} {{ $grocery->Price }}</td>
                         <td class="subtotal">{!! "&euro; " !!} {{ $grocery->Quantity * $grocery->Price }}</td>
@@ -46,7 +48,7 @@
                     </tr>
                     @endforeach
                     <tr>
-                        <td id="total" colspan="3">Total</td>
+                        <td id="total" colspan="4">Total</td>
                         <td id="totalCost">{!! "&euro; " !!} {{ $total }}</td>
                         <td></td>
                         <td></td>
