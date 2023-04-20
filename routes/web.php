@@ -14,6 +14,7 @@ use App\Http\Controllers\GroceriesController;
 |
 */
 
+// TODO: oefening: gebruik eens een resource-controller om regels code te besparen (zie docunentatie)
 Route::get('/groceries', [GroceriesController::class, 'index'])->name('groceries.index');
 Route::get('/groceries/create', [GroceriesController::class, 'create'])->name('groceries.create');
 Route::post('/groceries', [GroceriesController::class, 'store'])->name('groceries.store');

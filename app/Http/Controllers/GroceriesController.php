@@ -34,6 +34,7 @@ class GroceriesController extends Controller
 
     public function store(Request $request)
     {
+        // TODO: zet validation in aparte form validation class (zie laravel documentatie)
         $request->validate([
             'Product' => 'required|string|min:2',
             'Category' => 'required',
@@ -42,6 +43,7 @@ class GroceriesController extends Controller
         ]);
 
         $grocery = new Grocery;
+        // TODO: haal bij voorkeur de data uit gevalideerde data door $validated = $request->validate te doen en de data daarna uit $validated te halen
         $grocery->Product = strtolower($request->Product);
         $grocery->Category = $request->Category;
         $grocery->Quantity = $request->Quantity;
@@ -70,8 +72,11 @@ class GroceriesController extends Controller
             'Price' => 'required|numeric'
         ]);
 
+        // TODOL waarom geen $grocery uit de route model-binding gebruiken? uit regel 66?
         $grocery = Grocery::find($request->segment(2));
         
+        // TODO: je spaart regels code uit door de create functie te gebruiken voor de grocery en de mass-assignen 
+        // (stop de gevalideerde data als array in de create functie)
         $grocery->Product = strtolower($request->Product);
         $grocery->Category = $request->Category;
         $grocery->Quantity = $request->Quantity;

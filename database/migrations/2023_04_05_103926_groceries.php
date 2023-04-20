@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('groceries', function (Blueprint $table) {
             $table->id();
+            // TODO: column names lower case, dus product ipv Product (conventie)
             $table->string('Product', 255);
             $table->integer('Quantity');
             $table->decimal('Price',10,2);
