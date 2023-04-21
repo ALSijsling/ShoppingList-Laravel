@@ -11,7 +11,9 @@ class Grocery extends Model
     
     public $timestamps = false;
 
+    protected $fillable = ['product', 'category', 'quantity', 'price'];
+
     public function category(): BelongsTo {
-        return $this->belongsTo(Category::class, 'Category', 'Category');
+        return $this->belongsTo(Category::class, 'category', 'category');
     }
 }

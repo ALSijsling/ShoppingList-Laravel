@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\GroceriesRequest;
 use App\Models\Grocery;
 use App\Models\Category;
 
@@ -15,7 +16,7 @@ class GroceriesController extends Controller
         $total = 0;
         
         foreach ($groceries as $grocery) {
-            $subtotal = $grocery->Quantity * $grocery->Price;
+            $subtotal = $grocery->quantity * $grocery->price;
             $total = $total + $subtotal;
         }
         
@@ -32,20 +33,15 @@ class GroceriesController extends Controller
                     ->with('categories', $categories);
     }
 
-    public function store(Request $request)
+    public function store(GroceriesRequest $request)
     {
-        $request->validate([
-            'Product' => 'required|string|min:2',
-            'Category' => 'required',
-            'Quantity' => 'required|integer|min:0',
-            'Price' => 'required|numeric'
-        ]);
+        $validated = $request->validated();
 
         $grocery = new Grocery;
-        $grocery->Product = strtolower($request->Product);
-        $grocery->Category = $request->Category;
-        $grocery->Quantity = $request->Quantity;
-        $grocery->Price = $request->Price;
+        $grocery->product = strtolower($validated['product']);
+        $grocery->category = $validated['category'];
+        $grocery->quantity = $validated['quantity'];
+        $grocery->price = $validated['price'];
         $grocery->save();
 
         return redirect('/groceries');        
@@ -61,22 +57,16 @@ class GroceriesController extends Controller
                     ->with('categories', $categories);
     }
 
-    public function update(Request $request, Grocery $grocery)
+    public function update(GroceriesRequest $request, Grocery $grocery)
     {
-        $request->validate([
-            'Product' => 'required|string|min:2',
-            'Category' => 'required',
-            'Quantity' => 'required|integer|min:0',
-            'Price' => 'required|numeric'
-        ]);
-
-        $grocery = Grocery::find($request->segment(2));
+        $validated = $request->validated();
         
-        $grocery->Product = strtolower($request->Product);
-        $grocery->Category = $request->Category;
-        $grocery->Quantity = $request->Quantity;
-        $grocery->Price = $request->Price;
-        $grocery->save();
+        $grocery->update ([
+            'product' => strtolower($validated['product']),
+            'category' => $validated['category'],
+            'quantity' => $validated['quantity'],
+            'price' => $validated['price'],
+        ]);
         
         return redirect('/groceries');
     }

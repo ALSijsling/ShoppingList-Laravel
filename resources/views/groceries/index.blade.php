@@ -28,11 +28,11 @@
                 <tbody>
                     @foreach ($groceries as $grocery)
                     <tr>
-                        <td class="product">{{ ucwords($grocery->Product) }}</td>
-                        <td class="category">{{ $grocery->Category }}</td>
-                        <td class="quantity">{{ $grocery->Quantity }}</td>
-                        <td class="price">{!! "&euro; " !!} {{ $grocery->Price }}</td>
-                        <td class="subtotal">{!! "&euro; " !!} {{ $grocery->Quantity * $grocery->Price }}</td>
+                        <td class="product">{{ ucwords($grocery->product) }}</td>
+                        <td class="category">{{ $grocery->category }}</td>
+                        <td class="quantity">{{ $grocery->quantity }}</td>
+                        <td class="price">{!! "&euro; " !!} {{ $grocery->price }}</td>
+                        <td class="subtotal">{!! "&euro; " !!} {{ $grocery->quantity * $grocery->price }}</td>
                         <td class="edit">
                             <form action="{{route('groceries.edit', ['grocery' => $grocery])}}" method="GET">
                                 <input type="submit" value="Edit">

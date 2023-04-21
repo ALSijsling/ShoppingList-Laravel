@@ -17,22 +17,22 @@
                 @csrf
                 @method('PUT')
 
-                <label for="Product">Product</label><br>
-                <input type="text" name="Product" value="{{ $grocery->Product }}"><br><br>
+                <label for="product">Product</label><br>
+                <input type="text" name="product" value="{{ $grocery->product }}"><br><br>
 
-                <label for="Category">Category</label><br>
-                <input list="Category" name="Category" placeholder="{{ $grocery ->Category }}">
-                    <datalist id="Category">
+                <label for="category">Category</label><br>
+                <input list="category" name="category" placeholder="{{ $grocery->category }}">
+                    <datalist id="category">
                         @foreach ($categories as $category)
-                            <option value="{{ $category->Category }}">
+                            <option value="{{ $category->category }}">
                         @endforeach
                     </datalist><br><br>
 
-                <label for="Quantity">Quantity</label><br>
-                <input type="number" name="Quantity" min="0" value="{{ $grocery->Quantity }}"><br><br>
+                <label for="quantity">Quantity</label><br>
+                <input type="number" name="quantity" min="0" value="{{ $grocery->quantity }}"><br><br>
 
-                <label for="Price">Price</label><br>
-                <input type="number" name="Price" min="0" step="0.01" value="{{ $grocery->Price }}"><br><br>
+                <label for="price">Price</label><br>
+                <input type="number" name="price" min="0" step="0.01" value="{{ $grocery->price }}"><br><br>
                 
                 <input type="submit" value="Update Grocery">
             </form>

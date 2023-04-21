@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('groceries', function (Blueprint $table) {
             $table->id();
-            $table->string('Product', 255);
-            $table->integer('Quantity');
-            $table->decimal('Price',10,2);
-            $table->string('Category', 255);
+            $table->string('product', 255);
+            $table->integer('quantity');
+            $table->decimal('price',10,2);
+            $table->string('category', 255);
         });
     }
 

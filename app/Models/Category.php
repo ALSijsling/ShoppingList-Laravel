@@ -12,6 +12,6 @@ class Category extends Model
     public $timestamps = false;
 
     public function grocery(): HasMany {
-        return $this->hasMany(Grocery::class, 'Category', 'Category');
+        return $this->hasMany(Grocery::class, 'category', 'category');
     }
 }
