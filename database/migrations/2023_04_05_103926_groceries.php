@@ -19,6 +19,11 @@ return new class extends Migration
             $table->integer('quantity');
             $table->decimal('price',10,2);
             $table->string('category', 255);
+            // TODO: column names lower case, dus product ipv Product (conventie)
+            $table->string('Product', 255);
+            $table->integer('Quantity');
+            $table->decimal('Price',10,2);
+            $table->string('Category', 255);
         });
     }
 

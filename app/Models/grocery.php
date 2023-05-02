@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+// TODO: filename upper case first (Grocery ipv grocery)
 class Grocery extends Model
 {
     use HasFactory;
